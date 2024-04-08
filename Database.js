@@ -17,11 +17,14 @@ class Database {
         this.con.connect(function (err, result) {
             if (err) throw err;
             console.log('Connected to SQL database succssfully!', result);
-        
-            con.query('SELECT * FROM customers', function (err, result, fields) {
-                if (err) throw err;
-                console.log(result);
-            });
+        });
+    }
+
+    executeQuery(query, callback) {
+        this.con.query(query, function (err, result, fields) {
+            console.log('executing query ' + query);
+            if (err) throw err;
+            return callback(result);
         });
     }
 }

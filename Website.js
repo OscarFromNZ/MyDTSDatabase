@@ -10,9 +10,11 @@ class Website {
         this.port = port;
     }
 
-    async init(secret) {
+    async init(secret, database) {
         let app = express();
-        
+
+        app.database = database;
+
         // Set 'views' directory for any views 
         // being rendered res.render()
         app.set('views', path.join(__dirname, 'views'));
@@ -22,10 +24,7 @@ class Website {
         // Set /public to being the JS and CSS source
         app.use(express.static(path.join(__dirname, 'public')));
 
-        // parse application/x-www-form-urlencoded
-        app.use(express.urlencoded({ extended: false }));
-
-        // parse application/json
+        app.use(express.urlencoded());
         app.use(express.json());
 
         // Setting up session
