@@ -3,6 +3,8 @@ const session = require('express-session');
 const path = require('path');
 
 const homeRoutes = require('./routes/homeRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
+const loginRoutes = require('./routes/loginRoutes');
 
 class Website {
     constructor(port) {
@@ -37,6 +39,8 @@ class Website {
 
         // Routes to be used
         app.use(homeRoutes);
+        app.use(dashboardRoutes);
+        app.use(loginRoutes);
 
         // Listen on given port
         app.listen(this.port, () => {
