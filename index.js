@@ -1,4 +1,4 @@
-// Import necessary packages
+// Import packages
 require('dotenv').config();
 
 // Initialize database
