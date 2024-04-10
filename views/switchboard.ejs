@@ -1,0 +1,21 @@
+<%- include("partials/header", { message: message }) %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Forms</h1>
+                <div class="button" onclick="document.location='switchboard/addNewCustomer'">Add New Customer</div>
+                <div class="button" onclick="document.location='switchboard/addNewBook'">Add New Book</div>
+                <div class="button" onclick="document.location='switchboard/addNewOrder'"> Add New Order</div>
+            </div>
+            <div class="col">
+                <h2>Reports</h2>
+                <div class="button" onclick="document.location='switchboard/newsletter'">Monthly Newsletter</div>
+                <div class="button" onclick="document.location='switchboard/salesByAuthor'">Sales By Author</div>
+                <div class="button" onclick="document.location='switchboard/packingSlip'">Packing Slip</div>
+                <div class="button" onclick="document.location='switchboard/booksByCustomer'">Books By Customer</div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("partials/footer") %>

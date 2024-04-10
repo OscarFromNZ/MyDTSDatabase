@@ -5,10 +5,11 @@
 
 .button {
     margin: 0;
-    background-color: #008c94;
-    border-width: 5;
-    border-color: #00cbd7;
-    color: white;
+    background-color: #cfe2ff;
+    border-color: #9ec5fe;
+    border-width: 5px;
+    border-radius: 5px;
+    color: #0b3190;
     padding: 15px 32px;
     text-align: center;
     font-size: 16px;

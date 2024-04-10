@@ -3,7 +3,7 @@ const session = require('express-session');
 const path = require('path');
 
 const homeRoutes = require('./routes/homeRoutes');
-const dashboardRoutes = require('./routes/dashboardRoutes');
+const switchboardRoutes = require('./routes/switchboardRoutes');
 const loginRoutes = require('./routes/loginRoutes');
 
 class Website {
@@ -39,7 +39,7 @@ class Website {
 
         // Routes to be used
         app.use(homeRoutes);
-        app.use(dashboardRoutes);
+        app.use(switchboardRoutes);
         app.use(loginRoutes);
 
         // Listen on given port
