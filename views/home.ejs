@@ -1,0 +1,9 @@
+<%- include("partials/header", { message: message }) %>
+
+    <h1>Welcome to my site.</h1>
+    <p>The way the site works: You can access the "frontend" forms and reports if you click the frontend view below. AKA the stuff that the hypothetical user would see. If you want to see what the tables look like and the queries and how I've actually set things up then you can click the backend view button.</p>
+
+    <div class="button" onclick="document.location='/login'"> Frontend view</div>
+    <div class="button" onclick="document.location='/backend'"> Backend view</div>
+
+  <%- include("partials/footer") %>
