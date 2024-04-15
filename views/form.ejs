@@ -1,5 +1,27 @@
 <%- include("partials/header", { message: message }) %>
 
-    
+    <form action="/addNew/<%= formName %>" method="POST">
+        <% tableData.forEach(function(field) { %>
+            <% if (field.Field !== tableData[0].Field) { %>
+                <div>
+                    <label for="<%= field.Field %>">
+                        <%= field.Field %>:
+                    </label>
+                    <input type="text" id="<%= field.Field %>" name="<%= field.Field %>" required>
+                </div>
+            <% } %>
+        <% }); %>
+        <button class="button" type="submit">Add New <%= formName %></button>
+    </form>
 
-  <%- include("partials/footer") %>
+    <form action="/delete/<%= formName %>" method="POST">
+        <div>
+            <label for="<%= tableData[0] %>">
+                <%= tableData[0].Field %>:
+            </label>
+            <input type="text" id="<%= tableData[0].Field %>" name="<%= tableData[0].Field %>" required>
+        </div>
+        <button class="button" type="submit">Delete <%= formName %></button>
+    </form>
+
+    <%- include("partials/footer") %>
