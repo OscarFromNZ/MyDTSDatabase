@@ -16,20 +16,7 @@ router.get('/switchboard', ensureAuthenticated, async (req, res) => {
 router.get('/switchboard/form/:formName', ensureAuthenticated, async (req, res) => {
     let formName = req.params.formName;
 
-    let tableName = "";
-
-    switch (formName) {
-        case "customer":
-            tableName = "tblCustomers";
-        break;
-
-        case "book":
-            tableName = "tblBooks";
-        break;
-
-        case "order":
-            tableName = "tblOrders";
-    }
+    let tableName = req.app.database.getTableNameWithFormName(req.params.formName);
 
     let query = `DESCRIBE ${tableName}`;
 

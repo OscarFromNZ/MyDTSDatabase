@@ -27,6 +27,14 @@ class Database {
             return callback(result);
         });
     }
+
+    getTableNameWithFormName(formName) {
+        return ('tbl' + capitalizeFirstLetter(formName) + 's');
+    }
 }
 
 module.exports = Database;
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
