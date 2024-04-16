@@ -29,12 +29,13 @@ class Database {
     }
 
     getTableNameWithFormName(formName) {
-        return ('tbl' + capitalizeFirstLetter(formName) + 's');
+        return ('tbl' + this.capitalizeFirstLetter(formName) + 's');
+    }
+
+    // I know it's dumb having it here but I couldn't be bothered putting it anywhere else, maybe I'll make a utils thing later
+    capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
 }
 
 module.exports = Database;
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}

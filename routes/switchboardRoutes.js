@@ -5,7 +5,6 @@ const ensureAuthenticated = require('../middleware/ensureAuthenicated');
 
 router.get('/switchboard', ensureAuthenticated, async (req, res) => {
     let message = '';
-
     if (req.query.message) {
         message = req.query.message;
     }
@@ -14,6 +13,11 @@ router.get('/switchboard', ensureAuthenticated, async (req, res) => {
 });
 
 router.get('/switchboard/form/:formName', ensureAuthenticated, async (req, res) => {
+    let message= '';
+    if (req.query.message) {
+        message = req.query.message;
+    }
+
     let formName = req.params.formName;
 
     let tableName = req.app.database.getTableNameWithFormName(req.params.formName);
@@ -21,7 +25,7 @@ router.get('/switchboard/form/:formName', ensureAuthenticated, async (req, res) 
     let query = `DESCRIBE ${tableName}`;
 
     req.app.database.executeQuery(query, function (tableData) {
-        res.render('form', { message: '', tableData, formName });
+        res.render('form', { message, tableData, formName });
     });
 });
 

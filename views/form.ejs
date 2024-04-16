@@ -1,6 +1,6 @@
 <%- include("partials/header", { message: message }) %>
 
-    <form action="/addNew/<%= formName %>" method="POST">
+    <form action="/create/<%= formName %>" method="POST">
         <% tableData.forEach(function(field) { %>
             <% if (field.Field !== tableData[0].Field) { %>
                 <div>
@@ -23,5 +23,7 @@
         </div>
         <button class="button" type="submit">Delete <%= formName %></button>
     </form>
+
+    Note: All dates are of form YYYY/MM/DD
 
     <%- include("partials/footer") %>
