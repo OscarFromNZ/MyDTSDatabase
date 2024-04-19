@@ -1,0 +1,32 @@
+<%- include("partials/header", { message: message }) %>
+
+<h1>Database Structure</h1>
+    <% databaseStructure.forEach(table => { %>
+        <h2><%= table.name %></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Data Type</th>
+                    <th>Field Size</th>
+                    <th>Input Mask</th>
+                    <th>Validation Rule</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% table.fields.forEach(field => { %>
+                    <tr>
+                        <td><%= field.name %></td>
+                        <td><%= field.dataType %></td>
+                        <td><%= field.fieldSize %></td>
+                        <td><%= field.inputMask %></td>
+                        <td><%= field.validationRule %></td>
+                        <td><%= field.description %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% }); %>
+
+  <%- include("partials/footer") %>

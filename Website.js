@@ -6,6 +6,8 @@ const homeRoutes = require('./routes/homeRoutes');
 const switchboardRoutes = require('./routes/switchboardRoutes');
 const loginRoutes = require('./routes/loginRoutes');
 const formRoutes = require('./routes/formRoutes');
+const reportRoutes = require('./routes/reportRoutes');
+const backendRoutes = require('./routes/backendRoutes');
 
 class Website {
     constructor(port) {
@@ -43,6 +45,8 @@ class Website {
         app.use(switchboardRoutes);
         app.use(loginRoutes);
         app.use(formRoutes);
+        app.use(reportRoutes);
+        app.use(backendRoutes);
 
         // Listen on given port
         app.listen(this.port, () => {
