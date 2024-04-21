@@ -1,0 +1,28 @@
+<%- include("partials/header", { message: message }) %>
+
+    <h1>Field names and their types - See visual diary for more detail</h1>
+    <% databaseStructure.forEach(table=> { %>
+        <h2>
+            <%= table.name %>
+        </h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Data Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% table.fields.forEach(field=> { %>
+                    <tr>
+                        <td>
+                            <%= field.name %>
+                        </td>
+                        <td>
+                            <%= field.dataType %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+        <% }); %>

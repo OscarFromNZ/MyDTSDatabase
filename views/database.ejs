@@ -1,0 +1,14 @@
+<%- include("partials/header", { message: message }) %>
+
+    <div class="container">
+        <div class="row">
+            <h1>Tables</h1>
+            <% tables.forEach(table=> { %>
+                <div class="button" onclick="document.location='database/<%= table.name %>'">
+                    <%= table.name %>
+                </div>
+                <% }); %>
+        </div>
+    </div>
+
+    <%- include("partials/footer") %>
