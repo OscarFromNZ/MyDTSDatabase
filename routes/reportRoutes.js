@@ -4,10 +4,12 @@ const router = express.Router();
 const ensureAuthenticated = require('../middleware/ensureAuthenicated');
 
 router.get('/switchboard/report/booksByCustomer', ensureAuthenticated, async (req, res) => {
-    //const query = `SELECT title, author FROM tblBooks`;
+    // number of orders per customer (aka number of books)
+    const query = `SELECT tblCustomers.CustomerID, tblCustomers.FirstName, tblCustomers.LastName, COUNT(tblOrders.Quantity) AS TotalBooks FROM tblCustomers, tblOrders WHERE tblCustomers.CustomerID = tblOrders.CustomerID GROUP BY tblCustomers.CustomerID`;
 
-    req.app.database.executeQuery(query, function(result) {
-        res.render('booksByCustomer', { books: result, message: '' });
+    req.app.database.executeQuery(query, function(results) {
+        console.log(results);
+        res.render('booksByCustomer', { results, message: '' });
     });
 });
 
@@ -25,7 +27,13 @@ router.get('/switchboard/report/packingSlip', ensureAuthenticated, async (req, r
 });
 
 router.get('/switchboard/report/salesByAuthor', ensureAuthenticated, async (req, res) => {
-    res.render('salesByAuthor', { message: '' });
+    // number of orders per customer (aka number of books)
+    const query = `SELECT tblAuthors.AuthorID, tblAuthors.FirstName, tblAuthors.LastName, COUNT(tblBooks.ISBN) AS NumberOfBooks FROM tblBooks, tblAuthors WHERE tblBooks.AuthorID = tblAuthors.AuthorID GROUP BY tblAuthors.AuthorID, tblAuthors.FirstName, tblAuthors.LastName;`;
+
+    req.app.database.executeQuery(query, function(results) {
+        console.log(results);
+        res.render('salesByAuthor', { results, message: '' });
+    });
 });
 
 router.get('/create/:formName', ensureAuthenticated, async (req, res) => {
