@@ -12,7 +12,7 @@ router.get('/switchboard/report/booksByCustomer', ensureAuthenticated, async (re
 });
 
 router.get('/switchboard/report/newsletter', ensureAuthenticated, async (req, res) => {
-    const query = `SELECT CustomerID, FirstName FROM tblCustomers WHERE Newsletter = 1`; // 1 means yes
+    const query = `SELECT CustomerID, CONCAT(firstName, ' ', lastName) AS fullName FROM tblCustomers WHERE Newsletter = 1`; // 1 means yes
 
     req.app.database.executeQuery(query, function(results) {
         // results is an array where results[0].CustomerID and results[0].FirstName

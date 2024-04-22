@@ -25,8 +25,10 @@ router.post('/create/:formName', ensureAuthenticated, async (req, res) => {
     let tableName = req.app.database.getTableNameWithFormName(formName);
     let formBody = req.body;
 
-    let newsletter = formBody.Newsletter.toLowerCase() === 'yes' ? 1 : 0;
-    formBody.Newsletter = newsletter;
+    if (formBody.Newsletter) {
+        let newsletter = formBody.Newsletter.toLowerCase() === 'yes' ? 1 : 0;
+        formBody.Newsletter = newsletter;
+    }
 
     let fieldNames = Object.keys(formBody).join(", ");
     let fieldValues = Object.values(formBody).map(value => `'${value}'`).join(", ");

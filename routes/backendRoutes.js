@@ -14,6 +14,7 @@ router.get('/database', async (req, res) => {
 router.get('/database/:tableName', async (req, res) => {
     let tableName = req.params.tableName;
 
+    /*
     // wait maybe don't even need to do this
     let tableLayoutDatas = await req.app.database.getDatabaseStructure();
     let tableLayoutDataIndex = 0;
@@ -25,15 +26,14 @@ router.get('/database/:tableName', async (req, res) => {
         }
     }
     // writing that for loop gave me a massive deja vu
+    */
 
     let selectAllQuery = `SELECT * from ${tableName}`;
 
-    req.app.database.executeQuery(selectAllQuery, function(result) {
-        console.log(result);
-        res.redirect(`/switchboard/form/${formName}?message=Successfully deleted customer with ID ${req.body.CustomerID}`);
+    req.app.database.executeQuery(selectAllQuery, function(rowData) {
+        console.log(rowData);
+        res.render(`tableview`, { message: '', rowData });
     });
-
-    res.render(`database/${tableName}`, { message: '' });
 });
 
 module.exports = router;

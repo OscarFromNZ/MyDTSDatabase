@@ -1,0 +1,26 @@
+<%- include("partials/header", { message: message }) %>
+
+    <table>
+        <thead>
+            <tr>
+                <% for (let column in rowData[0]) { %>
+                    <th>
+                        <%= column %>
+                    </th>
+                    <% } %>
+            </tr>
+        </thead>
+        <tbody>
+            <% rowData.forEach(row=> { %>
+                <tr>
+                    <% for (let column in row) { %>
+                        <td>
+                            <%= row[column] %>
+                        </td>
+                        <% } %>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+
+    <%- include("partials/footer") %>
