@@ -6,6 +6,10 @@ router.get('/structure', async (req, res) => {
     res.render('structure', { databaseStructure, message: '' });
 });
 
+router.get('/queries', async (req, res) => {
+    res.render('queries', { message: '' });
+});
+
 router.get('/database', async (req, res) => {
     let tables = await req.app.database.getDatabaseStructure();
     res.render('database', { message: '', tables });

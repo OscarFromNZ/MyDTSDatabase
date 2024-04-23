@@ -1,0 +1,40 @@
+<%- include("partials/header", { message: message }) %>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Form queries:</h1>
+      <h3>Insert query:</h3>
+        <div class="codeblock">
+            `INSERT INTO ${tableName} (${fieldNames}) VALUES (${fieldValues});`
+        </div>
+        <h3>Delete query:</h3>
+        <div class="codeblock">
+            `DELETE FROM ${tableName} WHERE ${req.app.database.capitalizeFirstLetter(formName)}ID = ${req.body.CustomerID};`
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h1>Report queries:</h1>
+      <h3>Books By Customer query:</h3>
+        <div class="codeblock">
+            `SELECT tblCustomers.CustomerID, tblCustomers.FirstName, tblCustomers.LastName, COUNT(tblOrders.Quantity) AS TotalBooks FROM tblCustomers, tblOrders WHERE tblCustomers.CustomerID = tblOrders.CustomerID GROUP BY tblCustomers.CustomerID;`
+        </div>
+        <h3>Newsletter query:</h3>
+        <div class="codeblock">
+            `SELECT CustomerID, CONCAT(firstName, ' ', lastName) AS fullName FROM tblCustomers WHERE Newsletter = 1;`
+        </div>
+        <h3>Packing Slip query:</h3>
+        <div class="codeblock">
+            `SELECT tblOrders.CustomerID, tblOrders.PriceNZD, tblOrders.Quantity, tblOrders.OrderDate, tblOrders.ISBN, CONCAT(tblCustomers.FirstName, ' ', tblCustomers.LastName) AS FullName, CONCAT(tblCustomers.Street, ' ', tblCustomers.StreetNumber, ', ', tblCustomers.Suburb) AS Address, tblCustomers.PostCode FROM tblOrders, tblCustomers WHERE tblOrders.OrderID = ${orderID} AND tblCustomers.CustomerID = tblOrders.CustomerID;`
+        </div>
+        <h3>Sales By Author query:</h3>
+        <div class="codeblock">
+            `SELECT tblAuthors.AuthorID, tblAuthors.FirstName, tblAuthors.LastName, COUNT(tblBooks.ISBN) AS NumberOfBooks FROM tblBooks, tblAuthors WHERE tblBooks.AuthorID = tblAuthors.AuthorID GROUP BY tblAuthors.AuthorID, tblAuthors.FirstName, tblAuthors.LastName;`
+        </div>
+    </div>
+  </div>
+</div>
+
+  <%- include("partials/footer") %>

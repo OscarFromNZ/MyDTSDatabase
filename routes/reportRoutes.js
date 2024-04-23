@@ -23,8 +23,15 @@ router.get('/switchboard/report/newsletter', ensureAuthenticated, async (req, re
 });
 
 router.get('/switchboard/report/packingSlip', ensureAuthenticated, async (req, res) => {
-    res.render('packingSlip', { message: '' });
-});
+    let orderID = req.query.orderID;
+
+    const query = `SELECT tblOrders.CustomerID, tblOrders.PriceNZD, tblOrders.Quantity, tblOrders.OrderDate, tblOrders.ISBN, CONCAT(tblCustomers.FirstName, ' ', tblCustomers.LastName) AS FullName, CONCAT(tblCustomers.Street, ' ', tblCustomers.StreetNumber, ', ', tblCustomers.Suburb) AS Address, tblCustomers.PostCode FROM tblOrders, tblCustomers WHERE tblOrders.OrderID = ${orderID} AND tblCustomers.CustomerID = tblOrders.CustomerID`;
+
+    req.app.database.executeQuery(query, function(results) {
+        // results is an array where results[0].CustomerID and results[0].FirstName
+        console.log(results);
+        res.render('packingSlip', { results, orderID, message: '' });
+    });});
 
 router.get('/switchboard/report/salesByAuthor', ensureAuthenticated, async (req, res) => {
     // number of orders per customer (aka number of books)
@@ -36,6 +43,7 @@ router.get('/switchboard/report/salesByAuthor', ensureAuthenticated, async (req,
     });
 });
 
+/*
 router.get('/create/:formName', ensureAuthenticated, async (req, res) => {
     let formName = req.params.formName;
     let tableName = req.app.database.getTableNameWithFormName(formName);
@@ -54,6 +62,7 @@ router.get('/create/:formName', ensureAuthenticated, async (req, res) => {
         res.redirect(`/switchboard/form/${formName}?message=Successfully added new ${formName}`);
     });
 });
+*/
 
 
 module.exports = router;

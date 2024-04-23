@@ -1,0 +1,58 @@
+<%- include("partials/header", { message: message }) %>
+
+<div class="row">
+  <div class="col">
+      <h1>OrderID</h1>
+      <div><%= orderID %></div>
+  </div>
+  <div class="col">
+      <h1>OrderDate</h1>
+      <div><%= results[0].OrderDate %></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+      <h1>CustomerID</h1>
+      <div><%= results[0].CustomerID %></div>
+  </div>
+  <div class="col">
+      <h1>Title</h1>
+      <div><%= results[0].Title %></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+      <h1>Name</h1>
+      <div><%= results[0].Name %></div>
+  </div>
+  <div class="col">
+      <h1>ISBN</h1>
+      <div><%= results[0].ISBN %></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+      <h1>Address</h1>
+      <div><%= results[0].Address %></div>
+  </div>
+  <div class="col">
+      <h1>PriceNZD</h1>
+      <div><%= results[0].PriceNZD %></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+      <h1>PostCode</h1>
+      <div><%= results[0].PostCode %></div>
+  </div>
+  <div class="col">
+      <h1>Quantity</h1>
+      <div><%= results[0].Quantity %></div>
+  </div>
+</div>
+
+  <%- include("partials/footer") %>
