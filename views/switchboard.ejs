@@ -3,22 +3,32 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Forms</h1>
-                <div class="button" onclick="document.location='switchboard/form/customer'">Add or Delete Customer</div>
-                <div class="button" onclick="document.location='switchboard/form/book'">Add or Delete Book</div>
-                <div class="button" onclick="document.location='switchboard/form/order'"> Add or Delete Order</div>
-                <div class="button" onclick="document.location='switchboard/form/author'"> Add or Delete Author</div>
-                <div class="button" onclick="document.location='switchboard/form/publisher'"> Add or Delete Publisher</div>
+                <div class="container-custom">
+                    <h1 class="column-header">Forms</h1>
+                    <div class="button" onclick="document.location='switchboard/form/customer'">Add or Delete Customer
+                    </div>
+                    <div class="button" onclick="document.location='switchboard/form/book'">Add or Delete Book</div>
+                    <div class="button" onclick="document.location='switchboard/form/order'"> Add or Delete Order</div>
+                    <div class="button" onclick="document.location='switchboard/form/author'"> Add or Delete Author
+                    </div>
+                    <div class="button" onclick="document.location='switchboard/form/publisher'"> Add or Delete
+                        Publisher</div>
+                </div>
             </div>
             <div class="col">
-                <h1>Reports</h1>
-                <div class="button" onclick="document.location='switchboard/report/newsletter'">Monthly Newsletter</div>
-                <div class="button" onclick="document.location='switchboard/report/salesByAuthor'">Sales By Author</div>
-                <div class="button" onclick="
-                let orderID = prompt('What is the order ID?');
-                document.location=`switchboard/report/packingSlip?orderID=${orderID}`
-                ">Packing Slip</div>
-                <div class="button" onclick="document.location='switchboard/report/booksByCustomer'">Books By Customer</div>
+                <div class="container-custom">
+                    <h1 class="column-header">Reports</h1>
+                    <div class="button" onclick="document.location='switchboard/report/newsletter'">Monthly Newsletter
+                    </div>
+                    <div class="button" onclick="document.location='switchboard/report/salesByAuthor'">Sales By Author
+                    </div>
+                    <div class="button" onclick="
+                    let orderID = prompt('What is the order ID?');
+                    document.location=`switchboard/report/packingSlip?orderID=${orderID}`
+                    ">Packing Slip</div>
+                    <div class="button" onclick="document.location='switchboard/report/booksByCustomer'">Books By
+                        Customer</div>
+                </div>
             </div>
         </div>
     </div>

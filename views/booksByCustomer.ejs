@@ -1,32 +1,35 @@
 <%- include("partials/header", { message: message }) %>
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>CustomerID</h1>
-      <% results.forEach(function(result) { %>
-        <div>
-          <%= result.CustomerID %>
+  <div class="container">
+    <div class="container-custom">
+      <div class="row">
+        <div class="col">
+          <h1>CustomerID</h1>
+          <% results.forEach(function(result) { %>
+            <div>
+              <%= result.CustomerID %>
+            </div>
+            <% }); %>
         </div>
-        <% }); %>
-    </div>
-    <div class="col">
-      <h1>CustomerName</h1>
-      <% results.forEach(function(result) { %>
-        <div>
-          <%= result.FirstName %> <%= result.LastName %>
+        <div class="col">
+          <h1>CustomerName</h1>
+          <% results.forEach(function(result) { %>
+            <div>
+              <%= result.FirstName %>
+                <%= result.LastName %>
+            </div>
+            <% }); %>
         </div>
-        <% }); %>
-    </div>
-    <div class="col">
-      <h1>TotalBooks</h1>
-      <% results.forEach(function(result) { %>
-        <div>
-          <%= result.TotalBooks %>
+        <div class="col">
+          <h1>TotalBooks</h1>
+          <% results.forEach(function(result) { %>
+            <div>
+              <%= result.TotalBooks %>
+            </div>
+            <% }); %>
         </div>
-        <% }); %>
+      </div>
     </div>
   </div>
-</div>
 
   <%- include("partials/footer") %>

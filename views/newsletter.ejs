@@ -1,22 +1,24 @@
 <%- include("partials/header", { message: message }) %>
 
   <div class="container">
-    <div class="row">
-      <div class="col">
-        <h1>CustomerID</h1>
-        <% results.forEach(function(result) { %>
-          <div>
-            <%= result.CustomerID %>
-          </div>
-          <% }); %>
-      </div>
-      <div class="col">
-        <h1>CustomerName</h1>
-        <% results.forEach(function(result) { %>
-          <div>
-            <%= result.fullName %>
-          </div>
-          <% }); %>
+    <div class="container-custom">
+      <div class="row">
+        <div class="col">
+          <h1>CustomerID</h1>
+          <% results.forEach(function(result) { %>
+            <div>
+              <%= result.CustomerID %>
+            </div>
+            <% }); %>
+        </div>
+        <div class="col">
+          <h1>CustomerName</h1>
+          <% results.forEach(function(result) { %>
+            <div>
+              <%= result.fullName %>
+            </div>
+            <% }); %>
+        </div>
       </div>
     </div>
   </div>

@@ -3,11 +3,8 @@
     margin-left: 10px;
 }
 
-.container {
-}
-
 .button {
-    margin: 0;
+    margin: 10px; 
     background-color: #cfe2ff;
     border-color: #9ec5fe;
     border-width: 5px;
@@ -17,6 +14,12 @@
     text-align: center;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+    background-color: #9ec5fe;
+    color: #ffffff;
 }
 
 .bottom {
@@ -24,11 +27,12 @@
     bottom: 10;
 }
 
-
-th, td {
+th,
+td {
     border: 1px solid #ddd;
     padding: 10px;
 }
+
 th {
     background-color: #9ec5fe;
 }
@@ -48,4 +52,21 @@ th {
     padding: 1em 1.5em;
     display: block;
     word-wrap: break-word;
+}
+
+
+.container-custom {
+    background-color: #f4f4f4;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.column-header {
+    margin-bottom: 10px;
+}
+
+.form-input {
+
 }
