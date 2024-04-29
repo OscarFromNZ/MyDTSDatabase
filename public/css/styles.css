@@ -23,7 +23,6 @@
 }
 
 .bottom {
-    position: absolute;
     bottom: 10;
 }
 
@@ -68,5 +67,17 @@ th {
 }
 
 .form-input {
+    width: 98%;
+}
 
+input[type=text] {
+    border: 1px solid #0b3190;
+    border-radius: 4px;
+  }
+
+.reportHeadingDiv {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align:center
 }

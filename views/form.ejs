@@ -1,7 +1,7 @@
 <%- include("partials/header", { message: message }) %>
 
     <div class="container-custom">
-
+        <h1>Create <%= formName %></h1>
         <form action="/create/<%= formName %>" method="POST">
             <% tableData.forEach(function(field) { %>
                 <% if (field.Field !==tableData[0].Field) { %>
@@ -19,7 +19,7 @@
         00.00.
     </div>
     <div class="container-custom">
-
+        <h1>Delete <%= formName %></h1>
         <form action="/delete/<%= formName %>" method="POST">
             <div>
                 <label for="<%= tableData[0] %>">

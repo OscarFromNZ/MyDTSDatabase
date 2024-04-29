@@ -1,25 +1,30 @@
 <%- include("partials/header", { message: message }) %>
 
-  <div class="container-custom">
+  <div class="container">
 
-    <form action="login" method="post">
-      <div>
-        <label for="username">Enter username</label>
-        <input type="text" name="username" id="username" class="form-input">
+    <div class="container-custom">
+      <div class="reportHeadingDiv">
+        <h1>Login</h1>
       </div>
+      <form action="login" method="post">
+        <div>
+          <label for="username">Enter username</label>
+          <input type="text" name="username" id="username">
+        </div>
 
-      <div>
-        <label for="password">Enter password</label>
-        <input type="password" name="password" id="password" class="form-input">
-      </div>
-      <div>
+        <div>
+          <label for="password">Enter password</label>
+          <input type="password" name="password" id="password">
+        </div>
+        <div>
 
-      <input type="submit" value="Login" class="button">
+          <input type="submit" value="Login" class="button">
+        </div>
+
+      </form>
+      username: Oscar, password: passwordhere123
+
     </div>
-
-    </form>
   </div>
-
-  username: Oscar, password: passwordhere123
 
   <%- include("partials/footer") %>
