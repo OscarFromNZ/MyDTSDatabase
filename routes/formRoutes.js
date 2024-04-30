@@ -10,13 +10,22 @@ router.post('/delete/:formName', ensureAuthenticated, async (req, res) => {
 
     let formBody = req.body;
 
-    let deleteQuery= `DELETE FROM ${tableName} WHERE ${req.app.database.capitalizeFirstLetter(formName)}ID = ${req.body.CustomerID}`;
+    let IDProperty = Object.keys(formBody)[0];
 
-    console.log(formBody);
+    let getQuery = `SELECT * FROM ${tableName} WHERE ${req.app.database.capitalizeFirstLetter(formName)}ID = ${formBody[IDProperty]}`;
 
-    req.app.database.executeQuery(deleteQuery, function(result) {
-        console.log(result);
-        res.redirect(`/switchboard/form/${formName}?message=Successfully deleted customer with ID ${req.body.CustomerID}`);
+    req.app.database.executeQuery(getQuery, function(result) {
+        console.log(result, ' result');
+        if (result.length === 0) {
+            res.redirect(`/switchboard/form/${formName}?message=Could not find record with ID ${formBody[IDProperty]} to delete`);
+        } else {
+            let deleteQuery= `DELETE FROM ${tableName} WHERE ${req.app.database.capitalizeFirstLetter(formName)}ID = ${formBody[IDProperty]}`;
+
+            req.app.database.executeQuery(deleteQuery, function(result) {
+                console.log(result);
+                res.redirect(`/switchboard/form/${formName}?message=Successfully deleted record with ID ${req.body.CustomerID}`);
+            });
+        }
     });
 });
 
@@ -37,6 +46,9 @@ router.post('/create/:formName', ensureAuthenticated, async (req, res) => {
 
     req.app.database.executeQuery(insertQuery, function(result) {
         console.log(result);
+        if (result == null) {
+            res.redirect(`/switchboard/form/${formName}?message=There was an error. Check your field values are correct.`);
+        }
         res.redirect(`/switchboard/form/${formName}?message=Successfully added new ${formName}`);
     });
 });

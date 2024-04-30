@@ -23,7 +23,7 @@ class Database {
     executeQuery(query, callback) {
         this.con.query(query, function (err, result, fields) {
             console.log('executing query ' + query);
-            if (err) throw err;
+            if (err) return 'error';
             return callback(result);
         });
     }
