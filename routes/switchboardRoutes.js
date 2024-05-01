@@ -48,7 +48,7 @@ router.get('/switchboard/mailmerge/export-to-csv', ensureAuthenticated, async (r
         res.download('./out.csv', 'download.csv', (err) => {
             if (err) {
                 console.error(err);
-                res.status(500).send('File download failed');
+                res.status(500).send('file download failed');
             }
         });
     });
