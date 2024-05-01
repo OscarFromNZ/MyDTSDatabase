@@ -29,6 +29,7 @@ class Database {
     }
 
     getTableNameWithFormName(formName) {
+        if (formName == 'login') return 'tblLogin'; // login doesn't match the same thingy as the other ones, idk the word
         return ('tbl' + this.capitalizeFirstLetter(formName) + 's');
     }
 
