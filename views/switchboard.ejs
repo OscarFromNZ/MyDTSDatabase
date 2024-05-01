@@ -36,9 +36,14 @@
 
         <div class="row">
             <div class="container-custom">
-                <h1 class="column-header">Mail merge (for newsletter)</h1>
-                <div class="button" onclick="document.location='switchboard/mailmerge/export-to-csv'">Export to .csv
+                <h1 class="column-header">Mail merge</h1>
+                <div class="button" onclick="document.location='switchboard/mailmerge/newsletter-export-to-csv'">
+                    Newsletter - Export to .csv
                 </div>
+                <div class="button" onclick="
+                let anotherOrderID = prompt('What is the order ID?');
+                document.location=`switchboard/mailmerge/packingslip-export-to-csv?orderID=${anotherOrderID}`;
+                ">Packing Slip - Export to .csv</div>
             </div>
         </div>
     </div>

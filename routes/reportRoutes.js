@@ -25,10 +25,10 @@ router.get('/switchboard/report/newsletter', ensureAuthenticated, async (req, re
 router.get('/switchboard/report/packingSlip', ensureAuthenticated, async (req, res) => {
     let orderID = req.query.orderID;
 
-    const query = `SELECT tblOrders.CustomerID, tblOrders.PriceNZD, tblOrders.Quantity, tblOrders.OrderDate, tblOrders.ISBN, CONCAT(tblCustomers.FirstName, ' ', tblCustomers.LastName) AS FullName, CONCAT(tblCustomers.Street, ' ', tblCustomers.StreetNumber, ', ', tblCustomers.Suburb) AS Address, tblCustomers.PostCode FROM tblOrders, tblCustomers WHERE tblOrders.OrderID = ${orderID} AND tblCustomers.CustomerID = tblOrders.CustomerID`;
+    // I'm dulpicating this query so much oops
+    const query = `SELECT tblOrders.CustomerID, tblOrders.PriceNZD, tblOrders.Quantity, tblOrders.OrderDate, tblOrders.ISBN, tblBooks.Title, CONCAT(tblCustomers.FirstName, ' ', tblCustomers.LastName) AS FullName, CONCAT(tblCustomers.Street, ' ', tblCustomers.StreetNumber, ', ', tblCustomers.Suburb) AS Address, tblCustomers.PostCode FROM tblOrders, tblCustomers, tblBooks WHERE tblOrders.OrderID = ${orderID} AND tblCustomers.CustomerID = tblOrders.CustomerID AND tblBooks.ISBN = tblOrders.ISBN;`;
 
     req.app.database.executeQuery(query, function(results) {
-        // results is an array where results[0].CustomerID and results[0].FirstName
         console.log(results);
         res.render('packingSlip', { results, orderID, message: '' });
     });});

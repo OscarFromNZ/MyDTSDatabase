@@ -27,7 +27,7 @@
         </div>
         <h3>Packing Slip query:</h3>
         <div class="codeblock">
-            `SELECT tblOrders.CustomerID, tblOrders.PriceNZD, tblOrders.Quantity, tblOrders.OrderDate, tblOrders.ISBN, CONCAT(tblCustomers.FirstName, ' ', tblCustomers.LastName) AS FullName, CONCAT(tblCustomers.Street, ' ', tblCustomers.StreetNumber, ', ', tblCustomers.Suburb) AS Address, tblCustomers.PostCode FROM tblOrders, tblCustomers WHERE tblOrders.OrderID = ${orderID} AND tblCustomers.CustomerID = tblOrders.CustomerID;`
+            `SELECT tblOrders.CustomerID, tblOrders.PriceNZD, tblOrders.Quantity, tblOrders.OrderDate, tblOrders.ISBN, tblBooks.Title, CONCAT(tblCustomers.FirstName, ' ', tblCustomers.LastName) AS FullName, CONCAT(tblCustomers.Street, ' ', tblCustomers.StreetNumber, ', ', tblCustomers.Suburb) AS Address, tblCustomers.PostCode FROM tblOrders, tblCustomers, tblBooks WHERE tblOrders.OrderID = ${orderID} AND tblCustomers.CustomerID = tblOrders.CustomerID AND tblBooks.ISBN = tblOrders.ISBN;`
         </div>
         <h3>Sales By Author query:</h3>
         <div class="codeblock">

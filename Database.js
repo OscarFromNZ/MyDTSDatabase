@@ -22,8 +22,9 @@ class Database {
 
     executeQuery(query, callback) {
         this.con.query(query, function (err, result, fields) {
-            console.log('executing query ' + query);
-            if (err) return 'error';
+            console.log('executed query ' + query);
+            if (err) return console.log(err);
+            console.log("checked for error, calling back, results " + result);
             return callback(result);
         });
     }
