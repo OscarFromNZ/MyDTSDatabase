@@ -48,6 +48,7 @@ class Website {
         app.use(reportRoutes);
         app.use(backendRoutes);
 
+        // process.env.PORT is some weird cleardb thing, yeah
         // Listen on given port
         app.listen(process.env.PORT, () => {
             console.log(`Server is running on port ${process.env.PORT}, http://localhost:${process.env.PORT}`);
