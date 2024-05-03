@@ -5,7 +5,7 @@ const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 const ensureAuthenticated = require('../middleware/ensureAuthenicated');
 
-router.get('/switchboard', ensureAuthenticated, async (req, res) => {
+router.get('/switchboard/', ensureAuthenticated, async (req, res) => {
     let message = '';
     if (req.query.message) {
         message = req.query.message;
