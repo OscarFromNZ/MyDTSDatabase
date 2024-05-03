@@ -1,4 +1,6 @@
 let mysql = require('mysql');
+const url = require('url');
+
 
 class Database {
     constructor() {
@@ -6,12 +8,25 @@ class Database {
     }
 
     async init(password) {
+        // heroku stuff
+        const dbUrl = process.env.CLEARDB_DATABASE_URL;
+        const dbUrlParts = url.parse(dbUrl);
+        const auth = dbUrlParts.auth.split(':');
+    
+        this.con = mysql.createConnection({
+            host: dbUrlParts.hostname,
+            user: auth[0],
+            password: auth[1],
+            database: dbUrlParts.path.substring(1) // Remove the leading slash
+        });
+        /*
         this.con = mysql.createConnection({
             host: 'localhost',
             user: 'root',
             password: password,
             database: 'mydatabase'
         });
+        */
 
         // Connect to SQL database and log "Connected!" on success as well as the result
         this.con.connect(function (err, result) {
