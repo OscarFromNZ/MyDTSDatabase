@@ -49,8 +49,8 @@ class Website {
         app.use(backendRoutes);
 
         // Listen on given port
-        app.listen(this.port, () => {
-            console.log(`Server is running on port ${this.port}, http://localhost:${this.port}`);
+        app.listen(process.env.PORT, () => {
+            console.log(`Server is running on port ${process.env.PORT}, http://localhost:${process.env.PORT}`);
         });
 
         // I didn't want to define it earlier so that I didn't have to add this. to everything, I hope this is good practice
