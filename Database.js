@@ -8,17 +8,15 @@ class Database {
     }
 
     async init(password) {
-        // heroku stuff
+        // heroku stuff - createPool
         const dbUrl = process.env.CLEARDB_DATABASE_URL;
         const dbUrlParts = new URL(dbUrl);
-    
-        const auth = dbUrlParts.username + ':' + dbUrlParts.password; // Get username and password directly
-    
-        this.con = mysql.createConnection({
+        
+        this.con = mysql.createPool({
             host: dbUrlParts.hostname,
             user: dbUrlParts.username,
             password: dbUrlParts.password,
-            database: dbUrlParts.pathname.substring(1) // Remove the leading slash
+            database: dbUrlParts.pathname.substring(1)
         });
         /*
         this.con = mysql.createConnection({
@@ -26,14 +24,16 @@ class Database {
             user: 'root',
             password: password,
             database: 'mydatabase'
-        });
+        }); 
         */
 
         // Connect to SQL database and log "Connected!" on success as well as the result
+        /*
         this.con.connect(function (err, result) {
             if (err) throw err;
             console.log('Connected to SQL database succssfully!', result);
         });
+        */
     }
 
     executeQuery(query, callback) {
