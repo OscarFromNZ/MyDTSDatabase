@@ -1,5 +1,5 @@
 let mysql = require('mysql');
-const url = require('url');
+const { URL } = require('url');
 
 
 class Database {
@@ -10,14 +10,15 @@ class Database {
     async init(password) {
         // heroku stuff
         const dbUrl = process.env.CLEARDB_DATABASE_URL;
-        const dbUrlParts = url.parse(dbUrl);
-        const auth = dbUrlParts.auth.split(':');
+        const dbUrlParts = new URL(dbUrl);
+    
+        const auth = dbUrlParts.username + ':' + dbUrlParts.password; // Get username and password directly
     
         this.con = mysql.createConnection({
             host: dbUrlParts.hostname,
-            user: auth[0],
-            password: auth[1],
-            database: dbUrlParts.path.substring(1) // Remove the leading slash
+            user: dbUrlParts.username,
+            password: dbUrlParts.password,
+            database: dbUrlParts.pathname.substring(1) // Remove the leading slash
         });
         /*
         this.con = mysql.createConnection({
