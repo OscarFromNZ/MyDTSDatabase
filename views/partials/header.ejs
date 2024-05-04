@@ -4,15 +4,18 @@
 
 <body>
 
-<nav class="navbar navbar-light bg-light">
-    <div class="navbar-brand">
-        <img src="https://i.imgur.com/kL8L8hM.png" width="50" height="50" class="d-inline-block">
-        Title Waves
-    </div>
-</nav>
+    <nav class="navbar navbar-light bg-light">
+        <div class="navbar-brand">
+            <a href="/">
+                <img src="https://i.imgur.com/kL8L8hM.png" width="50" height="50" class="d-inline-block"
+                    alt="Title Waves Logo">
+                Title Waves
+            </a>
+        </div>
+    </nav>
 
-<% if (message) { %>
-    <div class="alert alert-primary">
-        <%= message %>
-    </div>
-  <% } %>
+    <% if (message) { %>
+        <div class="alert alert-primary">
+            <%= message %>
+        </div>
+        <% } %>
